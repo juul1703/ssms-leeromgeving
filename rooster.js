@@ -203,9 +203,18 @@ function haalRooster(){
 /* Wordt aangeroepen zodra de feed verandert (cache én live).
    Bouwt de vakken op en laat de pagina zich verversen — welke pagina dan ook. */
 var FEED_LUISTERAARS = [];
+var AUTOVAKKEN_GEDAAN = false;
 function opFeed(fn){
   FEED_LUISTERAARS.push(fn);
-  if (ROOSTER_FEED && typeof DATA !== 'undefined') { autoVakken(); fn(); }
+  /* Alleen de nieuwe luisteraar draaien. Hier ook autoVakken() aanroepen
+     bouwde alle roostervakken opnieuw op, waardoor de lessen die eerder
+     aangemelde bestanden net hadden gezet weer werden weggegooid. Met
+     meerdere inhoudsbestanden overleefde alleen de laatste. autoVakken()
+     draait al in feedKlaar, voordat de luisteraars aan de beurt zijn. */
+  if (ROOSTER_FEED && typeof DATA !== 'undefined') {
+    if (!AUTOVAKKEN_GEDAAN) autoVakken();
+    fn();
+  }
 }
 
 function feedKlaar(){
@@ -359,6 +368,7 @@ function autoVakken(){
   sem.vakken = sem.vakken.filter(function(v){ return !v.uitRooster; });
   Object.keys(perVak).forEach(function(id){ sem.vakken.push(perVak[id]); });
   sem.vakken.sort(function(a, b){ return a.naam.localeCompare(b.naam, 'nl'); });
+  AUTOVAKKEN_GEDAAN = true;
 }
 
 /* Elk college in je rooster wordt een les die je kunt afvinken. */
