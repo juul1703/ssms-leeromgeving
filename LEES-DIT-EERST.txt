@@ -1,0 +1,42 @@
+SSMS-leeromgeving — complete repo
+
+Dit is alles. Sleep de INHOUD van deze map naar de hoofdmap van je
+nieuwe repository, dus niet de map zelf. Er hoort geen submap te
+ontstaan; alle bestanden staan naast elkaar.
+
+Daarna in je repo: Settings, Pages, Source op de main branch en de
+hoofdmap. Even wachten tot de build klaar is en de site staat.
+
+Belangrijk: de volgorde van de scripttags onderin index.html,
+vak.html en les.html luistert nauw. intro-boek.js en
+society-slides.js moeten na ssms-inhoud.js komen en VOOR vak.js en
+les.js, want die twee tekenen de pagina meteen bij het laden.
+
+Wat er in staat
+---------------
+index.html, vak.html, les.html  de drie pagina's
+styles.css                      opmaak
+app.js                          homescreen, deadlines, voortgang
+rooster.js                      leest je MyTimetable-link
+vak.js, les.js                  tekenen de vak- en lespagina
+lesblokken.js, lesstof.js       de blokken in een les
+lesextra.js                     extra's op de lespagina
+ssms-inhoud.js                  alle lesstof, het programma per vak
+                                en de course manuals
+intro-boek.js                   koppelt de boekhoofdstukken van Intro
+                                aan de sessies uit het programma
+society-slides.js               college 1 van Society & Politics
+sw.js                           offline-cache, netwerk eerst
+manifest.webmanifest            app-icoon en naam op je beginscherm
+
+Nog te doen
+-----------
+Maak een map 'manuals' en zet daar de module manual in onder de naam
+
+  Y1_Semester_1_Manual_SSMS_20262027.pdf
+
+Dan werkt de pdf-knop bij Intro to Safety & Security.
+
+Daarna je roosterlink opnieuw koppelen via het tandwiel rechtsboven.
+Die staat in je browser, niet in de code, dus die verhuist niet mee.
+Je vinkjes en je eigen deadlines ook niet.
